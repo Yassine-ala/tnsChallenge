@@ -1,0 +1,14 @@
+Image {
+    width: 80;
+    height: 80;
+    stretch: aspectFill;
+}
+.nativescript {
+    opacity: 0;
+}
+.angular {
+    opacity: 0;
+}
+.nangular {
+    opacity: 0;
+}
