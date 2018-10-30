@@ -11,12 +11,10 @@ import {AnimationCurve} from "tns-core-modules/ui/enums";
 })
 export class HomeComponent implements OnInit {
 
-    @ViewChild('animatedBtn1') animatedBtn1: ElementRef;
-    @ViewChild('animatedBtn2') animatedBtn2: ElementRef;
-
     @ViewChild('nativescript') nativescript: ElementRef;
     @ViewChild('angular') angular: ElementRef;
     @ViewChild('nangular') nangular: ElementRef;
+    @ViewChild('title') title: ElementRef;
 
     constructor(private page: Page) { this.page.actionBarHidden = true; }
 
@@ -26,49 +24,11 @@ export class HomeComponent implements OnInit {
         
      }
 
-    /* colorInstantChange() {
-        console.log('Requesting immediate color change');
-        this.animatedBtn1.nativeElement.backgroundColor = new Color("blue");
-    }
-
-    colorGradualChange() {
-        console.log('Requesting gradual color change');
-        this.animatedBtn2.nativeElement.animate({ backgroundColor: new Color("green"), duration: 2000 });
-    } 
-
-    currentY:number = 0;
-
-    slidingAnimation() {
-        console.log('Requesting a sliding animmation');
-        this.currentY += 500 ;
-        this.nangular.nativeElement.animate({
-            translate: { x: 150, y: 250},    
-            duration: 1000,
-            curve: AnimationCurve.easeIn
-        });
-    }
-
-    rotationAnimation() {
-        console.log('Requesting a rotation animmation');
-        this.nativescript.nativeElement.animate({ opacity: 1 })
-        .then(() => this.nativescript.nativeElement.animate({ translate: { x: 100, y: 100 } }))
-        .then(() => this.nativescript.nativeElement.animate({ translate: { x: 0, y: 0 } }))
-        .then(() => this.nativescript.nativeElement.animate({ scale: { x: 3, y: 3 } }))
-        .then(() => this.nativescript.nativeElement.animate({ scale: { x: 1, y: 1 } }))
-        .then(() => this.nativescript.nativeElement.animate({ rotate: 480 }))
-        .then(() => this.nativescript.nativeElement.animate({ rotate: 0 }))
-        .then(() => {
-        console.log("Animation finished");
-      })
-        .catch((e) => {
-        console.log(e.message);
-      });
-    }*/
-
     start() {
         this.nativescriptAnimation();
-        this.angularAnimation();
+        this.angularAnimation(); 
         this.nangular.nativeElement.animate({ translate: { x: 170, y: 250 }}).catch(e=>console.log(e));
+        this.title.nativeElement.animate({ translate: { x: 80, y: 350 }}).catch(e=>console.log(e));
     }
 
     nativescriptAnimation() {
@@ -87,6 +47,7 @@ export class HomeComponent implements OnInit {
         //center
         .then(() => this.nativescript.nativeElement.animate({ translate: { x: 170, y: 250 } }))
         .then(() => this.nativescript.nativeElement.animate({ opacity: 0}))
+        .then(() => this.title.nativeElement.animate({ translate: { x: 80, y: 400 } }))
         .then(() => {
         console.log("Nativescript finished");
       })

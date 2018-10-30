@@ -12,3 +12,9 @@ Image {
 .nangular {
     opacity: 0;
 }
+.title {
+    font-size: 32;
+    color: darkblue;
+    font-weight: bold;
+
+}
