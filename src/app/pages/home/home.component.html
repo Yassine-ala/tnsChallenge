@@ -8,4 +8,14 @@
 
         <label #title text="TNS NG Challenge" class="title"></label>
 
+        <button #startButton text="Explore" (tap)="explore()" class="startButton"></button>
+
+        <StackLayout width="100%" marginTop="70%" padding="10">
+        <StackLayout horizontalAlignment="center" *ngIf="exploreClicked" width="50%">
+		<TextField hint="Email Address" keyboardType="email" autocorrect="false" autocapitalizationType="none" text="sample@domain.com"
+		 class="input-border"></TextField>
+		<TextField hint="Password" secure="true" text="samplePassword" class="input-border" marginTop="3px"></TextField>
+        </StackLayout>
+        </StackLayout>
+
 </AbsoluteLayout>

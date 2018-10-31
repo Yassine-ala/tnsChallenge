@@ -1,7 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import {Page} from 'tns-core-modules/ui/page';
-import { Color } from "tns-core-modules/color/color";
-import {AnimationCurve} from "tns-core-modules/ui/enums";
 
 @Component({
     selector: "ns-home",
@@ -11,22 +9,24 @@ import {AnimationCurve} from "tns-core-modules/ui/enums";
 })
 export class HomeComponent implements OnInit {
 
+    exploreClicked: boolean = false;
     @ViewChild('nativescript') nativescript: ElementRef;
     @ViewChild('angular') angular: ElementRef;
     @ViewChild('nangular') nangular: ElementRef;
     @ViewChild('title') title: ElementRef;
+    @ViewChild('startButton') startButton: ElementRef;
 
     constructor(private page: Page) { this.page.actionBarHidden = true; }
 
     ngOnInit(): void { 
         let me = this;
-        setTimeout(function(){ me.start() }, 1000);
-        
+        setTimeout(function(){ me.start() }, 500);
      }
 
     start() {
         this.nativescriptAnimation();
         this.angularAnimation(); 
+        this.startButton.nativeElement.animate({ translate: { x: 164, y: 450 } }).then(console.log('done')).catch(e=> console.log(e));
         this.nangular.nativeElement.animate({ translate: { x: 170, y: 250 }}).catch(e=>console.log(e));
         this.title.nativeElement.animate({ translate: { x: 80, y: 350 }}).catch(e=>console.log(e));
     }
@@ -67,6 +67,7 @@ export class HomeComponent implements OnInit {
         .then(() => this.angular.nativeElement.animate({ opacity: 0}))
         .then(() => this.nangular.nativeElement.animate({ opacity: 1}))
         .then(() => this.nangular.nativeElement.animate({ scale: { x: 2, y: 2 } }))
+        .then(() => this.startButton.nativeElement.animate({ opacity: 1}))
         .then(() => {
         console.log("NAngular finished");
       })
@@ -75,7 +76,14 @@ export class HomeComponent implements OnInit {
       });
     }
 
-    nangularAnimation() {
-        this.nangular.nativeElement.animate
+    explore() {
+        this.startButton.nativeElement.animate({ translate: { x: 164, y: 600 }})
+        .then(()=> {
+            this.startButton.nativeElement.text="Login";
+            this.exploreClicked = true;
+        })
+        .catch((e) => {
+            console.log(e.message);
+          });
     }
 }
