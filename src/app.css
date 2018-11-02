@@ -10,3 +10,19 @@ of writing your own CSS rules. For a full list of class names in the theme
 refer to http://docs.nativescript.org/ui/theme.
 */
 @import '~nativescript-theme-core/css/core.light.css';
+
+.fa {
+  font-family: "FontAwesome";
+}
+
+.float-btn {
+    background-color: #006AB2;
+    border-radius: 50%;
+    position: fixed;
+    width: 56;
+    height: 56;
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+    font-size: 24;
+  }

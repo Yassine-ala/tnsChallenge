@@ -10,29 +10,47 @@ import {Page} from 'tns-core-modules/ui/page';
 export class HomeComponent implements OnInit {
 
     exploreClicked: boolean = false;
+    darkTheme: boolean = false;
     @ViewChild('nativescript') nativescript: ElementRef;
     @ViewChild('angular') angular: ElementRef;
     @ViewChild('nangular') nangular: ElementRef;
     @ViewChild('title') title: ElementRef;
     @ViewChild('startButton') startButton: ElementRef;
+    @ViewChild('horns') horns: ElementRef;
+    @ViewChild('aureola') aureola: ElementRef;
 
-    constructor(private page: Page) { this.page.actionBarHidden = true; }
+    constructor(private page: Page) { 
+        this.page.actionBarHidden = true; 
+    }
 
     ngOnInit(): void { 
         let me = this;
-        setTimeout(function(){ me.start() }, 500);
+        setTimeout(function(){ me.accelerate() }, 500);
      }
 
+    accelerate() {
+        this.nangular.nativeElement.animate({ translate: { x: 170, y: 250 } })
+        .then(() => this.title.nativeElement.animate({ translate: { x: 80, y: 400 }}))
+        .then(() => this.nangular.nativeElement.animate({ opacity: 1}))
+        .then(() => this.nangular.nativeElement.animate({ scale: { x: 2, y: 2 } }))
+        .then(() => this.startButton.nativeElement.animate({ translate: { x: 164, y: 450 } }))
+        .then(() => this.startButton.nativeElement.animate({ opacity: 1}))
+        .then(() => this.aureola.nativeElement.animate({ translate: { x: 132, y: 130 }}))
+        .then(() => this.horns.nativeElement.animate({ translate: { x: 145, y: 130 }}))
+        .catch((e) => {
+            console.log(e.message);
+          });
+     }
+     
     start() {
         this.nativescriptAnimation();
         this.angularAnimation(); 
-        this.startButton.nativeElement.animate({ translate: { x: 164, y: 450 } }).then(console.log('done')).catch(e=> console.log(e));
+        this.startButton.nativeElement.animate({ translate: { x: 164, y: 450 } }).catch(e=> console.log(e));
         this.nangular.nativeElement.animate({ translate: { x: 170, y: 250 }}).catch(e=>console.log(e));
         this.title.nativeElement.animate({ translate: { x: 80, y: 350 }}).catch(e=>console.log(e));
     }
 
     nativescriptAnimation() {
-        console.log('Entered!');
         //left
         this.nativescript.nativeElement.animate({ translate: { x: 75, y: 250 } })
         .then(() => this.nativescript.nativeElement.animate({ opacity: 1}))

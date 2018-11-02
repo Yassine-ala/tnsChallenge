@@ -9,6 +9,18 @@ Image {
 .angular {
     opacity: 0;
 }
+.aureola {
+    /* opacity: 0; */
+    width: 40%;
+    height: 20%;
+
+}
+.horns {
+    /* opacity: 0; */
+    width: 30%;
+    height: 20%;    
+
+}
 .nangular {
     opacity: 0;
 }
