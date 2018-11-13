@@ -4,6 +4,7 @@ import { AppRoutingModule } from "./app.routing";
 import { AppComponent } from "./app.component";
 
 import { HomeComponent } from "~/app/pages/home/home.component";
+import { MenuComponent } from "./pages/menu/menu.component";
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
@@ -21,7 +22,8 @@ import { HomeComponent } from "~/app/pages/home/home.component";
     ],
     declarations: [
         AppComponent,
-        HomeComponent
+        HomeComponent,
+        MenuComponent
     ],
     providers: [
     ],

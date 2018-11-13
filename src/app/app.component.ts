@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 var Themes = require("nativescript-themes");
 
 @Component({
@@ -6,14 +6,18 @@ var Themes = require("nativescript-themes");
     moduleId: module.id,
     templateUrl: "./app.component.html",
 })
-export class AppComponent {
-
+export class AppComponent implements OnInit{
+    
     constructor() { 
-      //  Themes.applyTheme(Themes.getAppliedTheme("app-light.css"));
+        // application.setCssFileName("dark.css");
+    }
+    
+    ngOnInit() {
+        console.log(Themes.applyTheme(Themes.getAppliedTheme()));
     }
 
-   /*  switchTheme(obscure: boolean) {
-        obscure ? Themes.applyTheme("app-dark.css") : Themes.applyTheme("app-light.css");
-    } */
+    switchTheme(obscure: boolean) {
+        obscure ? Themes.applyTheme("dark.css") : Themes.applyTheme("light.css");
+    }
 
  }
